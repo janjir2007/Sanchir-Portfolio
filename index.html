@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sanchir Ariunbold — AI Engineer &amp; Software Developer</title>
+<meta property="og:title" content="Sanchir Ariunbold — AI Engineer & Software Developer">
+<meta property="og:description" content="Portfolio of Sanchir Ariunbold: AI projects, experience, and certificates.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/oil-change-predictor-cover.jpg">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000'/%3E%3Ccircle cx='27' cy='34' r='5' fill='%23ece7db'/%3E%3C/svg%3E">
+<meta name="description" content="Portfolio of Sanchir Ariunbold, AI Engineer and Software Developer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ---------- Tokens (dark by design) ---------- */
+  :root {
+    --bg: #000000;
+    --surface: #0c0c0c;
+    --charcoal: #161616;
+    --rule: #222222;
+    --muted: #85837d;
+    --faint: #55534f;
+    --ivory: #ece7db;
+    --serif: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --sans: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --gutter: clamp(1.25rem, 6vw, 6rem);
+    --max: 1180px;
+    color-scheme: dark;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #000000; --ivory: #ece7db; } }
+  :root[data-theme="dark"] { --bg: #000000; --ivory: #ece7db; }
+
+  *, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  html { scroll-behavior: smooth; scroll-padding-top: env(safe-area-inset-top, 0px); -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ivory);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+    z-index: 10; background: var(--bg);
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 1px solid var(--ivory); outline-offset: 4px; }
+  [hidden] { display: none !important; }
+
+  /* ---------- Navigation ---------- */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 20;
+    padding-top: env(safe-area-inset-top, 0px);
+    transition: background-color .5s ease, backdrop-filter .5s ease;
+  }
+  .nav.is-scrolled { background: rgba(0,0,0,.62); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+  .nav-inner {
+    max-width: var(--max); margin: 0 auto; padding: 1.4rem var(--gutter);
+    display: flex; justify-content: flex-end; gap: clamp(1.25rem, 3.5vw, 2.75rem);
+  }
+  .nav a {
+    font-size: .8125rem; letter-spacing: .02em; color: var(--muted);
+    transition: color .3s ease;
+  }
+  .nav a:hover, .nav a:focus-visible { color: var(--ivory); }
+
+  /* ---------- Landing ---------- */
+  .hero { position: relative; height: 100vh; height: 100svh; min-height: 520px; overflow: hidden; }
+  .hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hero-text {
+    position: absolute; left: var(--gutter); right: var(--gutter);
+    top: 54%;
+  }
+  .hero-name {
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(2.4rem, 7vw, 6.4rem);
+    line-height: .95; letter-spacing: -.035em;
+    color: var(--ivory);
+  }
+  .hero-role {
+    margin-top: 1.4rem; font-size: clamp(.9rem, 1.3vw, 1.05rem);
+    letter-spacing: .03em; color: var(--muted);
+  }
+  .hero-text > * { opacity: 0; animation: rise 1.6s cubic-bezier(.2,.7,.1,1) forwards; }
+  .hero-role { animation-delay: .35s !important; }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  /* ---------- Landing footer row ---------- */
+  .hero-foot {
+    position: absolute; left: 0; right: 0; bottom: clamp(1.5rem, 4vh, 2.75rem);
+    padding: 0 var(--gutter);
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: end;
+    font-size: .8125rem; letter-spacing: .02em; color: var(--muted);
+    opacity: 0; animation: rise 1.6s .9s cubic-bezier(.2,.7,.1,1) forwards;
+  }
+  .hero-status { justify-self: end; display: flex; align-items: center; gap: .6rem; }
+  .hero-status b {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--ivory);
+    box-shadow: 0 0 0 0 rgba(236,231,219,.5); animation: pulse 2.6s ease-out infinite;
+  }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(236,231,219,.45); } 70%, 100% { box-shadow: 0 0 0 9px rgba(236,231,219,0); } }
+  .scroll-cue { display: flex; flex-direction: column; align-items: center; gap: .75rem; color: var(--muted); transition: color .3s ease; }
+  .scroll-cue:hover { color: var(--ivory); }
+  .scroll-cue i { position: relative; width: 1px; height: 46px; background: linear-gradient(var(--rule), transparent); overflow: hidden; }
+  .scroll-cue i::after {
+    content: ""; position: absolute; left: -1px; top: -12px; width: 3px; height: 12px; border-radius: 2px;
+    background: linear-gradient(transparent, var(--ivory)); animation: drop 2.4s cubic-bezier(.6,0,.3,1) infinite;
+  }
+  @keyframes drop { 0% { transform: translateY(0); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(60px); opacity: 0; } }
+  @media (max-width: 760px) {
+    .hero-foot { grid-template-columns: 1fr; justify-items: center; gap: 1.25rem; }
+    .hero-loc { display: none; }
+    .hero-status { justify-self: center; order: -1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-foot { animation: none; opacity: 1; }
+    .hero-status b, .scroll-cue i::after { animation: none; }
+  }
+
+  /* ---------- Sections ---------- */
+  .section { max-width: var(--max); margin: 0 auto; padding: clamp(6rem, 14vw, 11rem) var(--gutter) 0; }
+  .section-title {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(2.1rem, 4.2vw, 3.3rem); line-height: 1.05; letter-spacing: -.03em;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+  }
+  .row {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr);
+    gap: 1rem 3rem; padding: 2.5rem 0; border-top: 1px solid var(--rule);
+  }
+  .row:last-child { border-bottom: 1px solid var(--rule); }
+  .row-label { font-size: .875rem; font-weight: 400; color: var(--muted); padding-top: .2rem; }
+  .row-body { max-width: 62ch; }
+  .lead { font-size: clamp(1.15rem, 1.8vw, 1.4rem); line-height: 1.55; font-weight: 300; letter-spacing: -.01em; }
+  .skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 3rem; max-width: none; }
+  .skills h4 { font-weight: 400; font-size: .9375rem; margin-bottom: .6rem; }
+  .skills ul { list-style: none; color: var(--muted); font-size: .9375rem; line-height: 1.9; }
+  .plain-list { list-style: none; }
+  .plain-list li { padding: .15rem 0; }
+  .ph { color: var(--faint); font-style: italic; }
+
+  /* ---------- Projects map ---------- */
+  .map {
+    display: grid; grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(1rem, 2.5vw, 2.5rem); row-gap: clamp(4rem, 8vw, 7rem);
+    padding-bottom: 2rem;
+  }
+  .map { position: relative; }
+  .frame { display: block; will-change: transform; transform-style: preserve-3d; transition: opacity .5s ease; }
+  .map.is-hovering .frame:not(.is-active) { opacity: .38; }
+  .frame-media::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
+    background: radial-gradient(420px circle at var(--gx, 50%) var(--gy, 50%), rgba(236,231,219,.10), transparent 60%);
+    transition: opacity .5s ease;
+  }
+  .frame:hover .frame-media::after { opacity: 1; }
+  .frame-title span:first-child { position: relative; transition: transform .5s cubic-bezier(.2,.7,.1,1); }
+  .frame-title span:first-child::after {
+    content: ""; position: absolute; left: 0; bottom: -3px; height: 1px; width: 100%;
+    background: var(--ivory); transform: scaleX(0); transform-origin: left; transition: transform .6s cubic-bezier(.2,.7,.1,1);
+  }
+  .frame:hover .frame-title span:first-child { transform: translateX(6px); }
+  .frame:hover .frame-title span:first-child::after { transform: scaleX(1); }
+  .cursor {
+    position: fixed; left: 0; top: 0; z-index: 30; pointer-events: none;
+    width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%;
+    background: var(--ivory); opacity: 0; display: grid; place-items: center;
+    transition: opacity .3s ease, width .45s cubic-bezier(.2,.7,.1,1), height .45s cubic-bezier(.2,.7,.1,1), margin .45s cubic-bezier(.2,.7,.1,1);
+  }
+  .cursor span { font-size: .75rem; font-weight: 500; color: #000; opacity: 0; transition: opacity .25s ease; }
+  .cursor.on { opacity: 1; }
+  .cursor.view { width: 86px; height: 86px; margin: -43px 0 0 -43px; }
+  .cursor.view span { opacity: 1; }
+  .map.has-cursor, .map.has-cursor .frame { cursor: none; }
+  .frame-media {
+    position: relative; overflow: hidden; background: var(--surface);
+    border: 1px solid var(--rule); border-radius: 2px;
+    transition: border-color .5s ease, box-shadow .6s ease;
+  }
+  .frame-media img, .frame-media svg { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(.2,.7,.1,1), opacity .5s ease; opacity: .82; }
+  .frame-title {
+    display: flex; justify-content: space-between; gap: 1rem;
+    margin-top: 1rem; font-size: .9375rem; color: var(--muted); transition: color .4s ease;
+  }
+  .frame-title span:last-child { color: var(--faint); }
+  .frame:hover .frame-media, .frame:focus-visible .frame-media { border-color: #3a3a3a; }
+  .frame:hover img, .frame:hover svg, .frame:focus-visible img, .frame:focus-visible svg { transform: scale(1.05); opacity: 1; }
+  .frame:hover .frame-media { border-color: #4a4a4a; box-shadow: 0 30px 80px -30px rgba(236,231,219,.12); }
+  .frame:hover .frame-title, .frame:focus-visible .frame-title { color: var(--ivory); }
+  .frame:focus-visible { outline: none; }
+  .frame:focus-visible .frame-media { outline: 1px solid var(--ivory); outline-offset: 4px; }
+
+  .f1 { grid-column: 1 / 7; }
+  .f1 .frame-media { aspect-ratio: 16 / 10; }
+  .f2 { grid-column: 8 / 12; margin-top: clamp(4rem, 12vw, 10rem); }
+  .f2 .frame-media { aspect-ratio: 4 / 3; }
+  .f3 { grid-column: 2 / 5; margin-top: -1rem; }
+  .f3 .frame-media { aspect-ratio: 3 / 4; }
+  .f4 { grid-column: 6 / 13; margin-top: clamp(3rem, 9vw, 8rem); }
+  .f4 .frame-media { aspect-ratio: 16 / 9; }
+
+  /* ---------- Experience ---------- */
+  .section-intro { max-width: 60ch; margin: calc(-1 * clamp(1.5rem, 3vw, 2.5rem)) 0 clamp(2.5rem, 5vw, 4rem); color: var(--muted); font-size: clamp(1rem, 1.4vw, 1.125rem); }
+  .exp-role { margin-top: .35rem; font-size: .9375rem; }
+  .exp-points { list-style: none; margin-top: 1.1rem; max-width: 62ch; }
+  .exp-points li { position: relative; padding-left: 1.25rem; margin-top: .55rem; font-size: .9375rem; }
+  .exp-points li::before { content: ""; position: absolute; left: 0; top: .78em; width: 6px; height: 1px; background: var(--muted); }
+
+  .strengths { margin-top: clamp(3.5rem, 7vw, 5.5rem); }
+  .strengths-title { font-weight: 400; font-size: .875rem; color: var(--muted); margin-bottom: 2rem; }
+  .strengths-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem clamp(1.5rem, 3vw, 2.5rem); }
+  .strength { padding-top: 1.25rem; border-top: 1px solid var(--rule); }
+  .strength h4 { font-weight: 400; font-size: 1.0625rem; letter-spacing: -.01em; margin-bottom: .6rem; }
+  .strength p { font-size: .9375rem; color: var(--muted); }
+  @media (max-width: 1000px) { .strengths-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .strengths-grid { grid-template-columns: 1fr; } }
+
+  /* ---------- Certificates ---------- */
+  .cert-title { font-size: clamp(1.15rem, 2vw, 1.5rem); letter-spacing: -.01em; }
+  .cert-meta { margin-top: .3rem; color: var(--muted); font-size: .9375rem; }
+  .cert-link {
+    display: inline-block; margin-top: 1.1rem; padding: 0; background: none; border: 0; cursor: pointer;
+    font: inherit; font-size: .9375rem; color: var(--ivory); border-bottom: 1px solid var(--rule); transition: border-color .3s ease;
+  }
+  .cert-link:hover { border-color: var(--ivory); }
+  .cert-summary { margin-top: .9rem; max-width: 58ch; font-size: .9375rem; }
+  button.cert-thumb { padding: 0; background: none; cursor: zoom-in; display: block; }
+  .cert-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0 1.75rem; align-self: start; }
+  .cert-link { line-height: 1.6; }
+  #certs .row-body, #volunteer .row-body { position: relative; max-width: none; display: grid; grid-template-columns: minmax(0, 1fr) clamp(140px, 22vw, 260px); column-gap: 2.5rem; grid-template-rows: auto auto auto 1fr; }
+  #certs .row-body > :not(.cert-thumb), #volunteer .row-body > :not(.cert-thumb) { grid-column: 1; }
+  .cert-thumb { grid-column: 2; grid-row: 1 / span 4; align-self: start; overflow: hidden; border-radius: 4px; border: 1px solid var(--rule); }
+  .cert-thumb img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; opacity: .85; transition: opacity .4s ease, transform 1s cubic-bezier(.2,.7,.1,1); }
+  .cert-thumb:hover img { opacity: 1; transform: scale(1.03); }
+  .detail-meta { margin: -1.75rem 0 3rem; color: var(--muted); }
+  .detail-hero img { width: 100%; height: 100%; object-fit: cover; }
+  .modules { list-style: decimal-leading-zero; padding-left: 2.4rem; }
+  .modules li { padding: .2rem 0; }
+  .modules li::marker { color: var(--faint); font-size: .875rem; }
+  .lightbox {
+    position: fixed; inset: 0; z-index: 40; display: grid; place-items: center;
+    padding: max(1.5rem, env(safe-area-inset-top, 0px)) 1.5rem max(1.5rem, env(safe-area-inset-bottom, 0px));
+    background: rgba(0,0,0,.88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); cursor: zoom-out;
+  }
+  .lightbox img { max-width: min(1100px, 100%); max-height: 86vh; object-fit: contain; border-radius: 6px; box-shadow: 0 40px 120px rgba(0,0,0,.8); }
+  .lightbox button { position: absolute; top: max(1.25rem, env(safe-area-inset-top, 0px)); right: 1.5rem; background: none; border: 0; color: var(--muted); font: inherit; font-size: .875rem; cursor: pointer; }
+  .lightbox button:hover { color: var(--ivory); }
+
+  /* Info revealed inside a project card on hover */
+  .frame-info {
+    position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: flex-end;
+    padding: clamp(1rem, 2.4vw, 1.75rem);
+    background: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.72) 38%, rgba(0,0,0,0) 75%);
+    opacity: 0; transition: opacity .5s ease; pointer-events: none;
+  }
+  .frame-info > * { transform: translateY(14px); opacity: 0; transition: transform .7s cubic-bezier(.2,.7,.1,1), opacity .6s ease; }
+  .fi-title { font-size: clamp(1.1rem, 1.8vw, 1.45rem); letter-spacing: -.02em; color: var(--ivory); }
+  .fi-desc { margin-top: .45rem; font-size: .875rem; line-height: 1.5; color: #c9c5bb; max-width: 46ch; }
+  .fi-tech { margin-top: .7rem; font-size: .75rem; letter-spacing: .03em; color: var(--muted); }
+  .fi-cta { margin-top: 1rem; font-size: .8125rem; color: var(--ivory); display: inline-flex; gap: .4rem; }
+  .fi-cta i { font-style: normal; transition: transform .4s ease; }
+  .frame:hover .frame-info, .frame:focus-visible .frame-info { opacity: 1; }
+  .frame:hover .frame-info > *, .frame:focus-visible .frame-info > * { transform: none; opacity: 1; }
+  .frame:hover .fi-desc { transition-delay: .05s; }
+  .frame:hover .fi-tech { transition-delay: .1s; }
+  .frame:hover .fi-cta { transition-delay: .15s; }
+  .frame:hover .fi-cta i { transform: translateX(4px); }
+  .f3 .fi-desc { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+  @media (hover: none) { .frame-info { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .frame-info > * { transform: none; transition: opacity .2s ease; } }
+
+  /* Screenshot hover inside project and certificate pages */
+  .sf { display: block; position: relative; cursor: zoom-in; will-change: transform; transform-style: preserve-3d;
+    transition: transform .7s cubic-bezier(.2,.7,.1,1); }
+  .phone .sf, .phone .sf::after { border-radius: clamp(12px, 1.8vw, 22px); }
+  .shot .sf, .shot .sf::after { border-radius: 10px; }
+  .sf::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
+    background: radial-gradient(460px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,.16), transparent 55%);
+    transition: opacity .45s ease;
+  }
+  .sf:hover::after, .sf:focus-visible::after { opacity: 1; }
+  .sf img { transition: box-shadow .6s ease, border-color .6s ease; }
+  .sf:hover img, .sf:focus-visible img { border-color: #4a4a4a; box-shadow: 0 60px 110px -40px rgba(0,0,0,1), 0 0 60px -20px rgba(236,231,219,.18); }
+  .sf:focus-visible { outline: none; }
+  .gallery figure { transition: opacity .5s ease; }
+  .gallery:hover figure:not(:hover) { opacity: .5; }
+  .gallery figcaption { transition: color .4s ease, transform .5s cubic-bezier(.2,.7,.1,1); }
+  .gallery figure:hover figcaption { color: var(--ivory); transform: translateX(4px); }
+  @media (hover: none), (prefers-reduced-motion: reduce) { .gallery:hover figure:not(:hover) { opacity: 1; } }
+
+  /* Coming soon line under the project map */
+  .map-more {
+    display: flex; align-items: center; gap: .9rem; margin-top: clamp(4rem, 8vw, 6.5rem);
+    font-size: .875rem; letter-spacing: .02em; color: var(--muted);
+  }
+  .map-more b {
+    flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--ivory);
+    animation: pulse 2.6s ease-out infinite;
+  }
+  .map-more i { flex: 1; height: 1px; background: linear-gradient(to right, var(--rule), transparent); }
+  @media (prefers-reduced-motion: reduce) { .map-more b { animation: none; } }
+
+  /* CV download */
+  .cv-btn {
+    display: inline-flex; align-items: center; gap: .75rem; padding: .85rem 1.4rem; cursor: pointer;
+    background: var(--ivory); color: #000; border: 0; border-radius: 999px;
+    font: inherit; font-size: .9375rem; font-weight: 500; transition: transform .4s cubic-bezier(.2,.7,.1,1), box-shadow .4s ease;
+  }
+  .cv-btn span { font-size: .6875rem; letter-spacing: .08em; padding: .15rem .45rem; border: 1px solid rgba(0,0,0,.25); border-radius: 999px; }
+  .cv-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 40px -10px rgba(236,231,219,.45); }
+  .nav a.nav-cv { color: var(--ivory); border: 1px solid #3a3a3a; border-radius: 999px; padding: .2rem .8rem; margin: -.2rem 0; transition: border-color .3s ease; }
+  .nav a.nav-cv:hover { border-color: var(--ivory); }
+
+  /* ---------- Contact ---------- */
+  .contact { padding-bottom: clamp(5rem, 10vw, 8rem); }
+  .contact-line { font-size: clamp(1.15rem, 2vw, 1.5rem); }
+  .contact-line a { border-bottom: 1px solid var(--rule); transition: border-color .3s ease; }
+  .contact-line a:hover { border-color: var(--ivory); }
+  .footer {
+    max-width: var(--max); margin: 0 auto; padding: 2rem var(--gutter) 2.5rem;
+    font-size: .8125rem; color: var(--faint);
+  }
+
+  /* ---------- Project detail ---------- */
+  .detail { max-width: var(--max); margin: 0 auto; padding: clamp(7rem, 12vw, 9rem) var(--gutter) 0; }
+  .back { font-size: .875rem; color: var(--muted); transition: color .3s ease; }
+  .back:hover { color: var(--ivory); }
+  .detail h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(2.4rem, 5.6vw, 4.6rem); line-height: 1; letter-spacing: -.035em;
+    margin: 2.5rem 0 3rem;
+  }
+  .detail-hero { aspect-ratio: 16 / 9; margin-bottom: clamp(3rem, 6vw, 5rem); }
+  .detail-hero.frame-media svg, .detail-hero.frame-media img { opacity: 1; }
+  .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, 2.5vw, 2rem); margin-top: clamp(3rem, 6vw, 5rem); }
+  .gallery .frame-media { aspect-ratio: 4 / 3; }
+  .gallery .frame-media svg, .gallery .frame-media img { opacity: 1; }
+  .gallery.phones { grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: start; }
+  .phone img { width: 100%; border-radius: clamp(12px, 1.8vw, 22px); border: 1px solid var(--rule); box-shadow: 0 40px 80px -40px rgba(0,0,0,.9); }
+  .phone figcaption, .shot figcaption { margin-top: 1rem; font-size: .875rem; color: var(--muted); }
+  .gallery.wide { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: clamp(2.5rem, 5vw, 4rem); }
+  .gallery.phones.n3, .gallery.phones.n6 { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 900px; margin-left: auto; margin-right: auto; }
+  .gallery.phones.n6 { row-gap: clamp(2.5rem, 5vw, 4rem); }
+  .gallery.bare .phone img { border: 0; border-radius: 0; box-shadow: none; }
+  .gallery.bare .phone .sf, .gallery.bare .phone .sf::after { border-radius: 13% / 6%; }
+  .gallery.wide .shot:first-child { grid-column: 1 / -1; }
+  .gallery.wide.full .shot { grid-column: 1 / -1; }
+  .shot img { width: 100%; border-radius: 10px; border: 1px solid var(--rule); box-shadow: 0 40px 80px -40px rgba(0,0,0,.9); }
+  .detail-next {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+    margin-top: clamp(4rem, 8vw, 6rem); padding: 2rem 0 0; border-top: 1px solid var(--rule);
+  }
+  .detail-next a { font-family: var(--serif); letter-spacing: -.02em; font-size: clamp(1.5rem, 2.8vw, 2.2rem); transition: opacity .3s ease; }
+  .detail-next a:hover { opacity: .7; }
+  .detail-next span { font-size: .875rem; color: var(--muted); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 760px) {
+    body { font-size: 1rem; }
+    .hero-text { top: 50%; }
+    .row { grid-template-columns: 1fr; gap: .9rem; padding: 2rem 0; }
+    .skills { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .map { grid-template-columns: 1fr; row-gap: 3.5rem; }
+    .f1, .f2, .f3, .f4 { grid-column: 1 / -1; margin-top: 0; }
+    .f2 { width: 82%; margin-left: auto; }
+    .f3 { width: 64%; }
+    .f4 { width: 92%; margin-left: auto; }
+    .gallery { grid-template-columns: 1fr; }
+    .gallery.phones { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2.5rem; }
+    .gallery.wide { grid-template-columns: 1fr; }
+    .gallery.phones.n3, .gallery.phones.n6 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    #certs .row-body, #volunteer .row-body { grid-template-columns: 1fr; }
+    .cert-thumb { grid-column: 1; grid-row: auto; margin-top: 1.5rem; }
+    .nav-inner { justify-content: center; padding-top: 1.1rem; padding-bottom: 1.1rem; }
+  }
+  @media (max-width: 420px) { .skills { grid-template-columns: 1fr; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero-text > * { animation: none; opacity: 1; }
+    .frame, .frame * { transition: none !important; }
+    .frame:hover img, .frame:hover svg { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav" aria-label="Main">
+  <div class="nav-inner">
+    <a href="#about" data-scroll="about">About Me</a>
+    <a href="#projects" data-scroll="projects">Projects</a>
+    <a href="#contact" data-scroll="contact">Contact Me</a>
+    <a href="#" class="nav-cv" data-cv>CV</a>
+  </div>
+</nav>
+
+<main id="home">
+  <header class="hero" id="top">
+    <canvas id="line" aria-hidden="true"></canvas>
+    <div class="hero-text">
+      <h1 class="hero-name" id="hero-name"></h1>
+      <p class="hero-role" id="hero-role"></p>
+    </div>
+    <div class="hero-foot">
+      <p class="hero-loc">Based in Ulaanbaatar, Mongolia</p>
+      <a class="scroll-cue" href="#about" data-scroll="about" aria-label="Scroll to About Me">
+        <span>Scroll</span>
+        <i aria-hidden="true"></i>
+      </a>
+      <p class="hero-status"><b aria-hidden="true"></b>Open to new opportunities</p>
+    </div>
+  </header>
+
+  <section class="section" id="about" aria-labelledby="about-title">
+    <h2 class="section-title" id="about-title">About Me</h2>
+    <div class="rows">
+      <div class="row">
+        <h3 class="row-label">Introduction</h3>
+        <div class="row-body"><p class="lead" id="intro"></p></div>
+      </div>
+      <div class="row">
+        <h3 class="row-label">Technical skills</h3>
+        <div class="row-body skills" id="skills"></div>
+      </div>
+      <div class="row">
+        <h3 class="row-label">Areas of interest</h3>
+        <div class="row-body" id="interests"></div>
+      </div>
+      <div class="row">
+        <h3 class="row-label">Currently exploring</h3>
+        <div class="row-body" id="exploring"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="experience" aria-labelledby="exp-title">
+    <h2 class="section-title" id="exp-title">Work Experience</h2>
+    <p class="section-intro" id="exp-intro"></p>
+    <div class="rows" id="exp"></div>
+    <div class="strengths">
+      <h3 class="strengths-title">What real work taught me</h3>
+      <div class="strengths-grid" id="strengths"></div>
+    </div>
+  </section>
+
+  <section class="section" id="projects" aria-labelledby="projects-title">
+    <h2 class="section-title" id="projects-title">Projects</h2>
+    <div class="map" id="map"></div>
+    <div class="map-more"><b aria-hidden="true"></b><span>More projects coming soon</span><i aria-hidden="true"></i></div>
+  </section>
+
+  <section class="section" id="certificates" aria-labelledby="certs-title">
+    <h2 class="section-title" id="certs-title">Certificates</h2>
+    <div class="rows" id="certs"></div>
+  </section>
+
+  <section class="section" id="volunteering" aria-labelledby="vol-title">
+    <h2 class="section-title" id="vol-title">Volunteering</h2>
+    <div class="rows" id="volunteer"></div>
+  </section>
+
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <h2 class="section-title" id="contact-title">Contact Me</h2>
+    <div class="rows" id="contact-rows"></div>
+  </section>
+</main>
+
+<article class="detail" id="detail" hidden aria-live="polite"></article>
+
+<footer class="footer" id="footer"></footer>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-label="Certificate">
+  <button type="button" id="lightbox-close">Close</button>
+  <img alt="Certificate">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+/* Embedded images for the Oil Change Predictor (cover + gallery) */
+const LD_COVER = "assets/learn-detect-stay-safe-cover.jpg";
+const LD_SHOTS = [{"src": "assets/learn-detect-stay-safe-1.jpg", "caption": "Welcome screen"}, {"src": "assets/learn-detect-stay-safe-2.jpg", "caption": "Choose a platform to practice"}, {"src": "assets/learn-detect-stay-safe-3.jpg", "caption": "Levels that unlock as you progress"}, {"src": "assets/learn-detect-stay-safe-4.jpg", "caption": "Spot the fake: a Facebook post"}, {"src": "assets/learn-detect-stay-safe-5.jpg", "caption": "Instant feedback explains the warning signs"}, {"src": "assets/learn-detect-stay-safe-6.jpg", "caption": "Email phishing challenge"}];
+const UNCAGE_IMG = "assets/uncage-volunteer.jpg";
+const SETGEL_IMG = "assets/setgeliin-ilgeelt.jpg";
+const CISCO_IMG = "assets/cisco-endpoint-security.jpg";
+const CERT_IMG = "assets/ai-engineer-certificate.jpg";
+const AWARD_IMG = "assets/ai-engineer-award.jpg";
+const GROUP_IMG = "assets/ai-engineer-cohort.jpg";
+const HN_COVER = "assets/haanein-cover.jpg";
+const HN_SHOTS = [{"src": "assets/haanein-1.jpg", "caption": "Home and place discovery"}, {"src": "assets/haanein-2.jpg", "caption": "Place details"}, {"src": "assets/haanein-3.jpg", "caption": "Reviews and ratings"}];
+const DF_COVER = "assets/store-demand-forecast-cover.jpg";
+const DF_SHOTS = [{"src": "assets/store-demand-forecast-1.jpg", "caption": "Dashboard with sales trends and business insights"}, {"src": "assets/store-demand-forecast-2.jpg", "caption": "Next-month forecast with import recommendations"}, {"src": "assets/store-demand-forecast-3.jpg", "caption": "Product sales table"}];
+const OIL_COVER = "assets/oil-change-predictor-cover.jpg";
+const OIL_SHOTS = [{"src": "assets/oil-change-predictor-1.jpg", "caption": "Home"}, {"src": "assets/oil-change-predictor-2.jpg", "caption": "Register a service"}, {"src": "assets/oil-change-predictor-3.jpg", "caption": "Vehicle card and prediction"}, {"src": "assets/oil-change-predictor-4.jpg", "caption": "Driver reminders"}];
+
+/* =========================================================
+   EDIT YOUR CONTENT HERE
+   Leave a field empty ("" or []) to show a placeholder.
+   ========================================================= */
+const CONFIG = {
+  name: "SANCHIR ARIUNBOLD",
+  role: "AI Engineer & Software Developer",
+
+  intro: "I’m an AI Engineer and Software Developer interested in building practical, intelligent applications that solve real-world problems. I enjoy turning ideas into working products, exploring new technologies, and continuously improving the way software is built.",
+
+  // Only add skills you have confirmed.
+  skills: {
+    "AI & Machine Learning": ["Python", "scikit-learn", "Computer vision: YOLO, CNN, OCR", "Model fine-tuning", "LLMs and prompt engineering", "AI agents"],
+    "Software Development": ["FastAPI", "React", "Flutter", "REST APIs", "Google Apps Script"],
+    "Tools & Frameworks": ["Figma", "Label Studio", "n8n workflow automation", "Airtable", "Git and GitHub"],
+    "Data & Infrastructure": ["PostgreSQL", "Database design", "Data analysis", "Data labeling and annotation"]
+  },
+
+  interests: "AI engineering, software development, and building practical applications.",
+  exploring: [
+    "Going deeper into machine learning: training, evaluating, and improving models",
+    "Computer vision for real-world recognition tasks",
+    "Building reliable LLM applications and AI agents",
+    "Backend architecture for AI-powered products"
+  ],
+
+  experienceIntro: "Every job has taught me something I use today: working with people, fixing things with my own hands, and understanding real business problems before writing any code.",
+  experience: [
+    {
+      company: "Geo-Expert LLC",
+      about: "Official distributor of Wolf Oil lubricants and Hengst filtration in Mongolia, with a mobile on-site oil change service for mining and industrial fleets.",
+      dates: "2026 – Present",
+      roles: ["Marketing Manager, IT & Oil Change Technician"],
+      points: [
+        "Designed and built the Oil Change Predictor, an internal app the team uses at every service to register vehicles and predict the next oil change.",
+        "Run marketing and IT for the company, including automating sales and customer workflows.",
+        "Perform on-site oil changes for fleet trucks, which shaped how I designed the app around real field work."
+      ],
+      link: { label: "See the Oil Change Predictor", href: "#project-1" }
+    },
+    {
+      company: "HS Khan Resort",
+      about: "Five-star resort.",
+      dates: "Summers 2024 & 2025",
+      roles: ["Waiter, June – August 2025", "English-speaking Receptionist, June – August 2024"],
+      points: [
+        "Welcomed and assisted international guests in English at the front desk.",
+        "Served guests in the restaurant to five-star hospitality standards.",
+        "Helped with housekeeping and hands-on maintenance and repairs around the resort, learning to solve practical problems quickly."
+      ]
+    }
+  ],
+
+  strengths: [
+    { title: "Communication", text: "Talking with international guests in English, and with drivers and clients every day, taught me to listen first and explain things simply." },
+    { title: "Hands-on problem solving", text: "From repairs at the resort to servicing trucks in the field, I’m used to fixing real problems with my hands, not only on a screen." },
+    { title: "Understanding the user", text: "I’ve done the work my software supports, so I build tools around how people actually work, not how I imagine they do." },
+    { title: "Adaptability and work ethic", text: "Front desk, restaurant, housekeeping, field service, marketing, IT. I learn fast and do what the job needs." }
+  ],
+
+  // image = certificate picture (path or data URI); url = online verification link
+  certificates: [
+    {
+      id: "ai-engineer-program",
+      title: "AI Engineer Program",
+      issuer: "AI Academy Asia",
+      note: "CPD certified",
+      date: "October 20, 2026",
+      credentialId: "2026102001",
+      image: CERT_IMG,
+      photo: AWARD_IMG,
+      url: "",
+      academy: "AI Academy Asia is a Mongolia-based AI education organization whose mission is to make AI education accessible to learners across Asia. It also leads Mongolia’s National AI campaign, which aims to build a talent pool of 2,500 AI specialists by 2030.",
+      program: "An intensive, project-based program covering the full AI engineering lifecycle, from data preparation and model development to the design, deployment, and maintenance of production-ready AI applications, completed with a capstone project.",
+      modules: ["Python", "Data Analysis", "Machine Learning", "Deep Learning", "Computer Vision & NLP", "ML Deployment", "Capstone Project"],
+      capstone: { title: "Car Oil Change Predictor", project: "project-1" },
+      recognition: "CPD certified by The CPD Certification Service, recognized in more than 100 countries.",
+      gallery: [
+        { src: CERT_IMG, caption: "Certificate of completion" },
+        { src: GROUP_IMG, caption: "Graduation day with the AI Engineer cohort" }
+      ]
+    },
+    {
+      id: "cisco-endpoint-security",
+      title: "Endpoint Security",
+      issuer: "Cisco Networking Academy",
+      note: "Mongolian School of Networking",
+      date: "May 27, 2025",
+      image: CISCO_IMG,
+      url: "",
+      program: "A cybersecurity course that builds the foundational skills of a junior cybersecurity analyst: assessing networks, operating systems, and endpoints for vulnerabilities, and protecting the confidentiality, integrity, and availability of data.",
+      topics: ["Cybersecurity threats, vulnerabilities, and attacks", "Network security and security infrastructure", "Wireless network communication", "Windows and Linux operating system security", "Malware and endpoint protection"],
+      recognition: "Completed through the Cisco Networking Academy program, delivered by Mongolian School of Networking. Part of Cisco’s Junior Cybersecurity Analyst learning pathway.",
+      academy: "Cisco Networking Academy is Cisco’s global IT and cybersecurity education program, taught through partner institutions around the world.",
+      gallery: [{ src: CISCO_IMG, caption: "Certificate of completion" }]
+    }
+  ],
+
+  volunteering: [
+    {
+      title: "Uncage Mongolia volunteer",
+      issuer: "Uncage Mongolia",
+      note: "72 hours over 6 months",
+      date: "November 2024",
+      summary: "Volunteered in Ulaanbaatar on work addressing animal welfare, the natural environment, and ecological balance, and on improving social activities for young people.",
+      image: UNCAGE_IMG
+    },
+    {
+      title: "“Setgeliin Ilgeelt” volunteer event",
+      issuer: "Huurhun Zulzaga NGO and NUM-Uncage Club, National University of Mongolia",
+      note: "Certificate of appreciation",
+      date: "April 2024",
+      summary: "Contributed as a volunteer to a voluntary event jointly organized by Huurhun Zulzaga NGO and the NUM-Uncage Club.",
+      image: SETGEL_IMG
+    }
+  ],
+
+  contact: {
+    email: "sanchir.ai@outlook.com",
+    phone: "+976 6060 2424",
+    github: "https://github.com/janjir2007",
+    linkedin: ""   // full URL
+  },
+
+  // Projects: id is used in the link (#project-1). image = path or data URI.
+  projects: [
+    {
+      id: "project-1",
+      title: "Oil Change Predictor",
+      year: "2026",
+      image: OIL_COVER,
+      overview: "A mobile web app for Geo-Expert’s on-site oil change service. Technicians photograph a truck’s license plate to pull up its record, log the service, and get a machine learning prediction of when the next oil change is due.",
+      purpose: "Fleet drivers often miss their next oil change, and service history is easy to lose. The app keeps a customer and vehicle database, predicts each truck’s next service from its route and history, and reminds drivers before they’re overdue.",
+      contribution: "Designed and built the product as my AI Engineer capstone: the plate-photo service flow, the customer and vehicle database, a prediction model trained on synthetic data, and the reminder workflow that sends drivers a message in Mongolian via Viber.",
+      technologies: ["Python", "FastAPI", "React", "PostgreSQL", "scikit-learn", "YOLO", "CNN", "OCR", "Model fine-tuning", "Label Studio"],
+      screenshots: OIL_SHOTS,
+      links: [{ label: "View code on GitHub", url: "https://github.com/janjir2007/capstone_project" }]
+    },
+    {
+      id: "project-2",
+      title: "Store Demand Forecast",
+      year: "2026",
+      image: DF_COVER,
+      overview: "A demand forecasting web app for a classmate’s furniture store. It tracks sales history across 336 products, summarizes business performance on a dashboard, and forecasts next month’s demand for each product with adjustable confidence ranges.",
+      purpose: "The store had sales records but no clear view of what would sell next month, so restocking and import orders relied on guesswork. The app turns past sales into a monthly forecast per product, flags rising and slowing items, and suggests what to import.",
+      contribution: "Built the entire project end to end: data preparation, the forecasting model, the backend API, and the dashboard interface.",
+      technologies: ["Python", "FastAPI", "scikit-learn"],
+      screenshots: DF_SHOTS,
+      gallery: "wide",
+      links: [{ label: "View code on GitHub", url: "https://github.com/janjir2007/store-demand-forecast-mini-project" }]
+    },
+    {
+      id: "project-3",
+      title: "Haanein",
+      year: "2025",
+      image: HN_COVER,
+      overview: "A mobile app for discovering lesser-known places to hang out, go on a date, or spend free time. Instead of only showing the most popular spots, it helps people find niche cafés, restaurants, and stores, with details, opening hours, and community reviews.",
+      purpose: "Deciding where to go often ends at the same few popular places. Haanein makes it easier to discover hidden spots nearby and choose where to go based on reviews from other people.",
+      contribution: "My high school final project, which I led as team leader. The idea was mine; I designed the full UI/UX and built the frontend.",
+      technologies: ["Flutter", "Figma", "UI/UX design"],
+      screenshots: HN_SHOTS,
+      links: [{ label: "View code on GitHub", url: "https://github.com/Agaaar/Haanein_web" }]
+    },
+    {
+      id: "project-4",
+      title: "Learn, Detect, Stay Safe",
+      year: "2026",
+      image: LD_COVER,
+      overview: "A gamified mobile app that teaches people to spot scams and fake news. Players practice on realistic-looking Facebook and Instagram posts, emails, phone calls, Telegram chats, and text messages, decide whether each one is safe or suspicious, and learn the warning signs after every answer.",
+      purpose: "Scams and misinformation keep getting more convincing, and most people only learn to spot them after being fooled. Built for the UNESCO Youth Hackathon 2026 during Global Media and Information Literacy Week, the app lets people practice safely, with levels, XP, and instant explanations.",
+      contribution: "Led the team as team leader and worked across frontend, backend, and design. We competed among participants from 129 countries.",
+      technologies: ["React", "JavaScript", "Tailwind CSS", "UI/UX design"],
+      screenshots: LD_SHOTS,
+      gallery: "bare",
+      links: []
+    }
+  ]
+};
+
+/* ---------- Helpers ---------- */
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const ph = (t) => `<span class="ph">${esc(t)}</span>`;
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* Placeholder visual: a quiet echo of the landing line */
+function placeholderArt(seed, label) {
+  const w = 800, h = 600;
+  const y0 = h * (0.45 + (seed % 3) * 0.08);
+  const px = w * (0.3 + (seed % 4) * 0.12);
+  let d = "";
+  for (let x = 0; x <= w; x += 8) {
+    const t = x / w;
+    const pin = 1 - Math.exp(-Math.pow((x - px) / w, 2) / 0.01);
+    const y = y0 + (Math.sin(t * Math.PI * 2 * (0.8 + seed * 0.15) + seed) * 34 + Math.sin(t * 13 + seed * 2) * 9) * pin;
+    d += (x ? "L" : "M") + x + " " + y.toFixed(1);
+  }
+  const gid = "g" + seed + Math.random().toString(36).slice(2, 6);
+  return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${esc(label)}">
+    <defs>
+      <linearGradient id="${gid}l" x1="0" x2="1">
+        <stop offset="0" stop-color="#ece7db" stop-opacity="0"/>
+        <stop offset="${(px / w).toFixed(2)}" stop-color="#ece7db" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#ece7db" stop-opacity="0"/>
+      </linearGradient>
+      <radialGradient id="${gid}r"><stop offset="0" stop-color="#ece7db" stop-opacity=".16"/><stop offset="1" stop-color="#ece7db" stop-opacity="0"/></radialGradient>
+    </defs>
+    <rect width="${w}" height="${h}" fill="#0b0b0b"/>
+    <circle cx="${px}" cy="${y0}" r="140" fill="url(#${gid}r)"/>
+    <path d="${d}" fill="none" stroke="url(#${gid}l)" stroke-width="1.2"/>
+    <circle cx="${px}" cy="${y0}" r="2.6" fill="#ece7db"/>
+    <text x="${w / 2}" y="${h - 34}" text-anchor="middle" fill="#55534f" font-family="Geist, sans-serif" font-size="18" letter-spacing=".5">Add screenshot</text>
+  </svg>`;
+}
+const media = (src, seed, label) => src
+  ? `<img src="${esc(src)}" alt="${esc(label)}" loading="lazy">`
+  : placeholderArt(seed, label);
+
+/* ---------- Render main page ---------- */
+function renderHome() {
+  $("#hero-name").textContent = CONFIG.name;
+  $("#hero-role").textContent = CONFIG.role;
+  $("#intro").innerHTML = CONFIG.intro ? esc(CONFIG.intro) : ph("Add a short introduction.");
+
+  $("#skills").innerHTML = Object.entries(CONFIG.skills).map(([cat, list]) => `
+    <div><h4>${esc(cat)}</h4>
+      <ul>${list.length ? list.map(s => `<li>${esc(s)}</li>`).join("") : `<li class="ph">Add confirmed skills</li>`}</ul>
+    </div>`).join("");
+
+  $("#interests").innerHTML = `<p>${CONFIG.interests ? esc(CONFIG.interests) : ph("Add areas of interest.")}</p>`;
+  $("#exploring").innerHTML = CONFIG.exploring.length
+    ? `<ul class="plain-list">${CONFIG.exploring.map(s => `<li>${esc(s)}</li>`).join("")}</ul>`
+    : `<p>${ph("Add what you’re currently learning.")}</p>`;
+
+  $("#map").innerHTML = CONFIG.projects.map((p, i) => `
+    <a class="frame f${(i % 4) + 1}" href="#${esc(p.id)}" data-depth="${[0.05, 0.09, 0.07, 0.04][i % 4]}">
+      <div class="frame-media">${media(p.image, i + 1, p.title + " preview")}${p.overview ? `
+        <div class="frame-info" aria-hidden="true">
+          <p class="fi-title">${esc(p.title)}</p>
+          <p class="fi-desc">${esc(p.overview.split(/(?<=\.)\s/)[0])}</p>
+          ${p.technologies.length ? `<p class="fi-tech">${p.technologies.slice(0, 4).map(esc).join(" · ")}</p>` : ""}
+          <span class="fi-cta">View project <i>→</i></span>
+        </div>` : ""}</div>
+      <div class="frame-title"><span>${esc(p.title)}</span><span>${esc(p.year || "")}</span></div>
+    </a>`).join("");
+
+  $("#exp-intro").textContent = CONFIG.experienceIntro || "";
+  $("#exp").innerHTML = CONFIG.experience.map(x => `
+    <div class="row"><h3 class="row-label">${esc(x.dates)}</h3>
+      <div class="row-body">
+        <p class="cert-title">${esc(x.company)}</p>
+        ${x.roles.map(r => `<p class="exp-role">${esc(r)}</p>`).join("")}
+        ${x.about ? `<p class="cert-meta">${esc(x.about)}</p>` : ""}
+        <ul class="exp-points">${x.points.map(pt => `<li>${esc(pt)}</li>`).join("")}</ul>
+        ${x.link ? `<a class="cert-link" href="${esc(x.link.href)}">${esc(x.link.label)}</a>` : ""}
+      </div></div>`).join("");
+
+  $("#strengths").innerHTML = (CONFIG.strengths || []).map(st => `
+    <div class="strength"><h4>${esc(st.title)}</h4><p>${esc(st.text)}</p></div>`).join("");
+
+  const certRow = ct => `
+    <div class="row"><h3 class="row-label">${ct.date ? esc(ct.date) : ph("Date to be added")}</h3>
+      <div class="row-body">
+        <p class="cert-title">${esc(ct.title)}</p>
+        <p class="cert-meta">${esc(ct.issuer)}${ct.note ? `, ${esc(ct.note)}` : ""}</p>
+        ${ct.summary ? `<p class="cert-summary">${esc(ct.summary)}</p>` : ""}
+        <div class="cert-links">
+          ${ct.id ? `<a class="cert-link" href="#${esc(ct.id)}">${ct.modules ? "Program details" : "Course details"}</a>` : ""}
+          ${ct.image ? `<button type="button" class="cert-link" data-cert="${esc(ct.image)}">View certificate</button>`
+            : ct.url ? `<a class="cert-link" href="${esc(ct.url)}" target="_blank" rel="noopener">View certificate</a>`
+            : `<p class="cert-meta ph">Certificate file to be added</p>`}
+        </div>
+        ${(ct.photo || ct.image) ? (ct.id
+          ? `<a class="cert-thumb" href="#${esc(ct.id)}" aria-label="${esc(ct.title)} details"><img src="${esc(ct.photo || ct.image)}" alt="${esc(ct.title)}" loading="lazy"></a>`
+          : `<button type="button" class="cert-thumb" data-cert="${esc(ct.image)}" aria-label="View ${esc(ct.title)} certificate"><img src="${esc(ct.image)}" alt="${esc(ct.title)}" loading="lazy"></button>`) : ""}
+      </div></div>`;
+  $("#certs").innerHTML = CONFIG.certificates.map(certRow).join("");
+  $("#volunteer").innerHTML = CONFIG.volunteering.map(certRow).join("");
+
+  const c = CONFIG.contact;
+  const contactRow = (label, value, href, empty) => `
+    <div class="row"><h3 class="row-label">${label}</h3>
+      <div class="row-body contact-line">${value ? `<a href="${esc(href)}"${href.startsWith("http") ? ' target="_blank" rel="noopener"' : ""}>${esc(value)}</a>` : ph(empty)}</div>
+    </div>`;
+  const pretty = (u) => u.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+  $("#contact-rows").innerHTML =
+    contactRow("Email", c.email, "mailto:" + c.email, "Email address to be added") +
+    (c.phone ? contactRow("Phone", c.phone, "tel:" + c.phone.replace(/\s/g, ""), "") : "") +
+    contactRow("GitHub", c.github && pretty(c.github), c.github, "GitHub profile to be added") +
+    contactRow("LinkedIn", c.linkedin && pretty(c.linkedin), c.linkedin, "LinkedIn profile to be added") +
+    `<div class="row"><h3 class="row-label">CV</h3><div class="row-body"><button type="button" class="cv-btn" data-cv>Download CV <span>PDF</span></button></div></div>`;
+
+  $("#footer").textContent = `© ${new Date().getFullYear()} ${CONFIG.name.split(" ").map(w => w[0] + w.slice(1).toLowerCase()).join(" ")}`;
+}
+
+/* ---------- Project detail ---------- */
+function renderDetail(p) {
+  const i = CONFIG.projects.indexOf(p);
+  const next = CONFIG.projects[(i + 1) % CONFIG.projects.length];
+  const row = (label, html) => `<div class="row"><h3 class="row-label">${label}</h3><div class="row-body">${html}</div></div>`;
+  const phones = p.screenshots.length && typeof p.screenshots[0] === "object";
+  const shots = phones
+    ? p.screenshots.map(sc => `<figure class="${p.gallery === "wide" ? "shot" : "phone"}"><span class="sf" data-cert="${esc(sc.src)}" role="button" tabindex="0" aria-label="Enlarge ${esc(sc.caption)}"><img src="${esc(sc.src)}" alt="${esc(sc.caption)}" loading="lazy"></span><figcaption>${esc(sc.caption)}</figcaption></figure>`).join("")
+    : p.screenshots.length
+    ? p.screenshots.map((s, k) => `<div class="frame-media">${media(s, i + k + 5, p.title + " screenshot " + (k + 1))}</div>`).join("")
+    : [0, 1].map(k => `<div class="frame-media">${placeholderArt(i + k + 5, "Screenshot placeholder")}</div>`).join("");
+
+  $("#detail").innerHTML = `
+    <a class="back" href="#projects">Back to projects</a>
+    <h1>${esc(p.title)}</h1>
+    <div class="frame-media detail-hero">${media(p.image, i + 1, p.title + " preview")}</div>
+    <div class="rows">
+      ${row("Overview", p.overview ? `<p class="lead">${esc(p.overview)}</p>` : `<p class="lead">${ph("Add a short overview of the project.")}</p>`)}
+      ${row("Problem or purpose", p.purpose ? `<p>${esc(p.purpose)}</p>` : `<p>${ph("Describe the problem this project solves.")}</p>`)}
+      ${row("My contribution", p.contribution ? `<p>${esc(p.contribution)}</p>` : `<p>${ph("Describe what you built yourself.")}</p>`)}
+      ${row("Technologies", p.technologies.length ? `<p>${p.technologies.map(esc).join(", ")}</p>` : `<p>${ph("List the technologies you used.")}</p>`)}
+      ${row("Links", p.links.length ? `<ul class="plain-list">${p.links.map(l => `<li><a class="contact-line" style="font-size:1rem;border-bottom:1px solid var(--rule)" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a></li>`).join("")}</ul>` : `<p>${ph("Add a repository or live demo link.")}</p>`)}
+    </div>
+    <div class="gallery${phones ? (p.gallery === "wide" ? " wide" : " phones n" + p.screenshots.length + (p.gallery === "bare" ? " bare" : "")) : ""}">${shots}</div>
+    <div class="detail-next"><span>Next project</span><a href="#${esc(next.id)}">${esc(next.title)}</a></div>`;
+}
+
+/* ---------- Certificate detail ---------- */
+function renderCert(ct) {
+  const row = (label, html) => `<div class="row"><h3 class="row-label">${label}</h3><div class="row-body">${html}</div></div>`;
+  const cap = ct.capstone && CONFIG.projects.find(p => p.id === ct.capstone.project);
+  const hero = ct.photo || ct.image;
+  const others = CONFIG.certificates.filter(x => x.id && x !== ct);
+  const next = others.length ? others[(CONFIG.certificates.indexOf(ct)) % others.length] : null;
+  $("#detail").innerHTML = `
+    <a class="back" href="#certificates">Back to certificates</a>
+    <h1>${esc(ct.title)}</h1>
+    <p class="detail-meta">${esc(ct.issuer)}, ${esc(ct.date)}</p>
+    ${ct.photo ? `<div class="frame-media detail-hero"><img src="${esc(hero)}" alt="Receiving the ${esc(ct.title)} certificate"></div>` : ""}
+    <div class="rows">
+      ${ct.program ? row(ct.modules ? "About the program" : "About the course", `<p class="lead">${esc(ct.program)}</p>`) : ""}
+      ${ct.modules ? row("Curriculum", `<ol class="modules">${ct.modules.map(m => `<li>${esc(m)}</li>`).join("")}</ol>`) : ""}
+      ${ct.topics ? row("Topics covered", `<ul class="plain-list">${ct.topics.map(m => `<li>${esc(m)}</li>`).join("")}</ul>`) : ""}
+      ${ct.capstone ? row("Capstone project", cap ? `<p><a class="cert-link" style="margin-top:0" href="#${esc(cap.id)}">${esc(ct.capstone.title)}</a></p>` : `<p>${esc(ct.capstone.title)}</p>`) : ""}
+      ${row("Certification", `${ct.recognition ? `<p>${esc(ct.recognition)}</p>` : ""}${ct.credentialId ? `<p class="cert-meta">Credential ID ${esc(ct.credentialId)}</p>` : ""}${ct.image ? `<button type="button" class="cert-link" data-cert="${esc(ct.image)}">View certificate</button>` : ""}`)}
+      ${ct.academy ? row(ct.capstone ? "About the academy" : "About the issuer", `<p>${esc(ct.academy)}</p>`) : ""}
+    </div>
+    ${ct.gallery ? `<div class="gallery wide full">${ct.gallery.map(g => `<figure class="shot"><span class="sf" data-cert="${esc(g.src)}" role="button" tabindex="0" aria-label="Enlarge ${esc(g.caption)}"><img src="${esc(g.src)}" alt="${esc(g.caption)}" loading="lazy"></span><figcaption>${esc(g.caption)}</figcaption></figure>`).join("")}</div>` : ""}
+    <div class="detail-next">${next ? `<span>Next certificate</span><a href="#${esc(next.id)}">${esc(next.title)}</a>` : `<span>Next</span><a href="#contact">Contact me</a>`}</div>`;
+}
+
+/* ---------- Routing (hash tokens) ---------- */
+const sections = ["about", "experience", "projects", "certificates", "volunteering", "contact", "top"];
+function route(smooth) {
+  const h = decodeURIComponent(location.hash.slice(1));
+  const p = CONFIG.projects.find(x => x.id === h);
+  const ct = CONFIG.certificates.find(x => x.id && x.id === h);
+  if (p || ct) {
+    p ? renderDetail(p) : renderCert(ct);
+    $("#home").hidden = true;
+    $("#detail").hidden = false;
+    document.title = `${(p || ct).title} — ${CONFIG.name}`;
+    lenis ? lenis.scrollTo(0, { immediate: true }) : window.scrollTo(0, 0);
+    stopLine();
+    return;
+  }
+  const wasDetail = !$("#detail").hidden;
+  $("#detail").hidden = true;
+  $("#home").hidden = false;
+  document.title = `${CONFIG.name} — ${CONFIG.role}`;
+  if (!W) resize();
+  startLine();
+  if (sections.includes(h)) {
+    const el = document.getElementById(h);
+    requestAnimationFrame(() => scrollToEl(el, smooth && !wasDetail));
+  }
+}
+window.addEventListener("hashchange", () => route(true));
+
+document.querySelectorAll("[data-scroll]").forEach(a => {
+  a.addEventListener("click", (e) => {
+    const id = a.dataset.scroll;
+    if ($("#detail").hidden) {
+      e.preventDefault();
+      scrollToEl(document.getElementById(id), true);
+    }
+  });
+});
+
+/* ---------- Nav background on scroll ---------- */
+const nav = $("#nav");
+const onScroll = () => nav.classList.toggle("is-scrolled", window.scrollY > 40);
+window.addEventListener("scroll", onScroll, { passive: true });
+
+/* ---------- Smooth scrolling ---------- */
+let lenis = null;
+if (!reduceMotion && window.Lenis) {
+  lenis = new Lenis({ duration: 1.25, easing: t => 1 - Math.pow(1 - t, 4), smoothWheel: true });
+  const tick = (time) => { lenis.raf(time); requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+}
+function scrollToEl(el, smooth) {
+  if (lenis && smooth) lenis.scrollTo(el, { offset: 0 });
+  else if (lenis) lenis.scrollTo(el, { immediate: true });
+  else el.scrollIntoView({ behavior: smooth && !reduceMotion ? "smooth" : "auto" });
+}
+
+/* ---------- Project map motion: scroll depth + cursor follow + tilt ---------- */
+const map = $("#map");
+const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+const cursorEl = document.createElement("div");
+cursorEl.className = "cursor"; cursorEl.innerHTML = "<span>View</span>";
+document.body.appendChild(cursorEl);
+const mouse = { x: innerWidth / 2, y: innerHeight / 2, inside: false };
+const cur = { x: mouse.x, y: mouse.y };
+let activeFrame = null, mapVisible = false, mapRaf = null;
+
+if (fine && !reduceMotion) map.classList.add("has-cursor");
+map.addEventListener("pointermove", (e) => {
+  mouse.x = e.clientX; mouse.y = e.clientY;
+  if (!mouse.inside) { cur.x = mouse.x; cur.y = mouse.y; }
+  mouse.inside = true;
+  if (fine && !reduceMotion) cursorEl.classList.add("on");
+  if (activeFrame) {
+    const r = activeFrame.querySelector(".frame-media").getBoundingClientRect();
+    activeFrame.style.setProperty("--gx", ((mouse.x - r.left) / r.width * 100) + "%");
+    activeFrame.style.setProperty("--gy", ((mouse.y - r.top) / r.height * 100) + "%");
+  }
+});
+map.addEventListener("pointerleave", () => { mouse.inside = false; cursorEl.classList.remove("on", "view"); });
+map.addEventListener("pointerover", (e) => {
+  const f = e.target.closest(".frame");
+  if (f === activeFrame) return;
+  activeFrame && activeFrame.classList.remove("is-active");
+  activeFrame = f;
+  if (f) { f.classList.add("is-active"); map.classList.add("is-hovering"); cursorEl.classList.toggle("view", !f.querySelector(".frame-info")); }
+  else { map.classList.remove("is-hovering"); cursorEl.classList.remove("view"); }
+});
+map.addEventListener("pointerleave", () => {
+  activeFrame && activeFrame.classList.remove("is-active"); activeFrame = null;
+  map.classList.remove("is-hovering");
+});
+
+function mapLoop() {
+  const vh = innerHeight, wide = innerWidth >= 760;
+  const mr = map.getBoundingClientRect();
+  map.querySelectorAll(".frame").forEach(f => {
+    const s = f._m || (f._m = { py: 0, mx: 0, my: 0, rx: 0, ry: 0 });
+    const depth = parseFloat(f.dataset.depth);
+    const cx = mr.left + f.offsetLeft + f.offsetWidth / 2;
+    const cy = mr.top + f.offsetTop + f.offsetHeight / 2;
+    let py = 0, mx = 0, my = 0, rx = 0, ry = 0;
+    if (wide) {
+      py = (cy - vh / 2) * depth * -1;
+      if (mouse.inside && fine) {
+        mx = (mouse.x - cx) / innerWidth * depth * 380;
+        my = (mouse.y - cy) / vh * depth * 260;
+        if (f === activeFrame) {
+          rx = -((mouse.y - cy) / f.offsetHeight) * 7;
+          ry = ((mouse.x - cx) / f.offsetWidth) * 7;
+        }
+      }
+    }
+    const k = 0.085;
+    s.py += (py - s.py) * 0.12; s.mx += (mx - s.mx) * k; s.my += (my - s.my) * k;
+    s.rx += (rx - s.rx) * k; s.ry += (ry - s.ry) * k;
+    f.style.transform = `perspective(1400px) translate3d(${s.mx.toFixed(2)}px, ${(s.py + s.my).toFixed(2)}px, 0) rotateX(${s.rx.toFixed(2)}deg) rotateY(${s.ry.toFixed(2)}deg)`;
+  });
+  cur.x += (mouse.x - cur.x) * 0.2; cur.y += (mouse.y - cur.y) * 0.2;
+  cursorEl.style.transform = `translate3d(${cur.x}px, ${cur.y}px, 0)`;
+  mapRaf = mapVisible ? requestAnimationFrame(mapLoop) : null;
+}
+if (!reduceMotion) {
+  new IntersectionObserver(([e]) => {
+    mapVisible = e.isIntersecting;
+    if (mapVisible && !mapRaf) mapRaf = requestAnimationFrame(mapLoop);
+  }, { rootMargin: "200px 0px" }).observe(map);
+}
+
+/* ---------- Landing line ---------- */
+const canvas = $("#line");
+const ctx = canvas.getContext("2d");
+let W = 0, H = 0, dpr = 1, raf = null, heroVisible = true, running = false;
+
+function resize() {
+  dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const r = canvas.getBoundingClientRect();
+  W = r.width; H = r.height;
+  canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  if (!running) drawLine(0);
+}
+const smooth = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+
+function drawLine(time) {
+  if (!W || !H) return;
+  ctx.clearRect(0, 0, W, H);
+  const mobile = W < 760;
+  const t = time;
+  // The light glides slowly along the line, left to right and back
+  const pxRatio = reduceMotion ? 0.42 : 0.5 + 0.36 * Math.sin(t * 0.00016 - 0.25);
+  const px = W * pxRatio;
+  const lift = reduceMotion ? 0 : Math.min(window.scrollY, H) * 0.12;
+  const baseY = H * (mobile ? 0.4 : 0.42) - lift;
+  const lineY = (x) => {
+    const u = x / W;
+    const shape = Math.sin(u * Math.PI * 1.8 + 0.6) * H * 0.034 + Math.sin(u * Math.PI * 4.3 + 2.0) * H * 0.011;
+    const motion = (Math.sin(u * 6.0 + t * 0.00016) * 0.6 + Math.sin(u * 11.0 - t * 0.0001 + 1.3) * 0.4) * H * 0.012;
+    return baseY + shape + motion;
+  };
+
+  // Path
+  ctx.beginPath();
+  for (let x = -4; x <= W + 4; x += 3) {
+    const y = lineY(x);
+    x === -4 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  }
+
+  // Brightness falls off from the point and fades into the dark at both edges
+  const g = ctx.createLinearGradient(0, 0, W, 0);
+  for (let i = 0; i <= 24; i++) {
+    const u = i / 24;
+    const d = u - pxRatio;
+    let a = 0.07 + 0.88 * Math.exp(-(d * d) / 0.02);
+    a *= smooth(0, 0.16, u) * smooth(1, 0.84, u);
+    g.addColorStop(u, `rgba(236,231,219,${a.toFixed(3)})`);
+  }
+  ctx.strokeStyle = g;
+  ctx.lineCap = "round";
+
+  ctx.save();
+  ctx.shadowColor = "rgba(236,231,219,0.55)";
+  ctx.shadowBlur = 10;
+  ctx.lineWidth = 1.4;
+  ctx.globalAlpha = 0.5;
+  ctx.stroke();
+  ctx.restore();
+  ctx.lineWidth = 1;
+  ctx.stroke();
+
+  // The point of light
+  const breathe = reduceMotion ? 0 : Math.sin(t * 0.0009) * 0.025;
+  const R = Math.min(W, H) * 0.32;
+  const by = lineY(px);
+  let rg = ctx.createRadialGradient(px, by, 0, px, by, R);
+  rg.addColorStop(0, `rgba(236,231,219,${0.085 + breathe})`);
+  rg.addColorStop(1, "rgba(236,231,219,0)");
+  ctx.fillStyle = rg; ctx.fillRect(px - R, by - R, R * 2, R * 2);
+
+  rg = ctx.createRadialGradient(px, by, 0, px, by, 22);
+  rg.addColorStop(0, `rgba(236,231,219,${0.42 + breathe})`);
+  rg.addColorStop(1, "rgba(236,231,219,0)");
+  ctx.fillStyle = rg; ctx.beginPath(); ctx.arc(px, by, 22, 0, Math.PI * 2); ctx.fill();
+
+  ctx.fillStyle = "#f6f2e8";
+  ctx.beginPath(); ctx.arc(px, by, 2.3, 0, Math.PI * 2); ctx.fill();
+}
+
+function loop(ts) { drawLine(ts); raf = requestAnimationFrame(loop); }
+function startLine() {
+  if (reduceMotion) { drawLine(0); return; }
+  if (running || !heroVisible) return;
+  running = true; raf = requestAnimationFrame(loop);
+}
+function stopLine() { running = false; if (raf) cancelAnimationFrame(raf); raf = null; }
+
+new IntersectionObserver(([e]) => {
+  heroVisible = e.isIntersecting;
+  heroVisible && $("#detail").hidden ? startLine() : stopLine();
+}).observe($(".hero"));
+window.addEventListener("resize", resize);
+if (reduceMotion) window.addEventListener("scroll", () => {}, { passive: true });
+
+/* ---------- Screenshot hover: 3D tilt + light that follows the cursor ---------- */
+const detailEl = $("#detail");
+if (fine && !reduceMotion) {
+  detailEl.addEventListener("pointermove", (e) => {
+    const sf = e.target.closest(".sf");
+    if (!sf) return;
+    const r = sf.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    sf.style.setProperty("--mx", (x * 100) + "%");
+    sf.style.setProperty("--my", (y * 100) + "%");
+    const tilt = sf.closest(".phone") ? 9 : 4;
+    sf.style.transform = `perspective(1100px) rotateX(${((0.5 - y) * tilt).toFixed(2)}deg) rotateY(${((x - 0.5) * tilt).toFixed(2)}deg) translateY(-8px) scale(1.02)`;
+  });
+  detailEl.addEventListener("pointerout", (e) => {
+    const sf = e.target.closest(".sf");
+    if (sf && !sf.contains(e.relatedTarget)) sf.style.transform = "";
+  });
+}
+detailEl.addEventListener("keydown", (e) => {
+  const sf = e.target.closest(".sf");
+  if (sf && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); sf.click(); }
+});
+
+/* ---------- CV download ---------- */
+function downloadCV() {
+  const a = document.createElement("a");
+  a.href = "Sanchir_Ariunbold_CV.pdf"; a.download = "Sanchir_Ariunbold_CV.pdf";
+  document.body.appendChild(a); a.click(); a.remove();
+}
+document.addEventListener("click", (e) => {
+  const t = e.target.closest("[data-cv]");
+  if (t) { e.preventDefault(); downloadCV(); }
+});
+
+/* ---------- Certificate viewer ---------- */
+const lb = $("#lightbox");
+function closeLightbox() { lb.hidden = true; lenis && lenis.start(); }
+document.addEventListener("click", (e) => {
+  const b = e.target.closest("[data-cert]");
+  if (b) { lb.querySelector("img").src = b.dataset.cert; lb.hidden = false; lenis && lenis.stop(); return; }
+  if (!lb.hidden && e.target.closest("#lightbox")) closeLightbox();
+});
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !lb.hidden) closeLightbox(); });
+
+/* ---------- Init ---------- */
+renderHome();
+resize();
+onScroll();
+route(false);
+</script>
+</body>
+</html>
