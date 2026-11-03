@@ -185,7 +185,20 @@
   .cursor.on { opacity: 1; }
   .cursor.view { width: 86px; height: 86px; margin: -43px 0 0 -43px; }
   .cursor.view span { opacity: 1; }
-  .map.has-cursor, .map.has-cursor .frame { cursor: none; }
+  html.has-cursor, html.has-cursor * { cursor: none !important; }
+  .cursor { z-index: 60; mix-blend-mode: difference; transition: opacity .3s ease, width .45s cubic-bezier(.2,.7,.1,1), height .45s cubic-bezier(.2,.7,.1,1), margin .45s cubic-bezier(.2,.7,.1,1), background-color .3s ease; }
+  .cursor.hot { width: 6px; height: 6px; margin: -3px 0 0 -3px; }
+  .cursor.view { mix-blend-mode: normal; width: 86px; height: 86px; margin: -43px 0 0 -43px; }
+  .cursor-ring {
+    position: fixed; left: 0; top: 0; z-index: 59; pointer-events: none;
+    width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%;
+    border: 1px solid rgba(236,231,219,.55); mix-blend-mode: difference; opacity: 0;
+    transition: opacity .3s ease, width .45s cubic-bezier(.2,.7,.1,1), height .45s cubic-bezier(.2,.7,.1,1), margin .45s cubic-bezier(.2,.7,.1,1), background-color .3s ease, border-color .3s ease;
+  }
+  .cursor-ring.on { opacity: 1; }
+  .cursor-ring.hot { width: 58px; height: 58px; margin: -29px 0 0 -29px; background: rgba(236,231,219,.08); border-color: rgba(236,231,219,.85); }
+  .cursor-ring.down { width: 26px; height: 26px; margin: -13px 0 0 -13px; }
+  .cursor.view ~ .cursor-ring, body:has(.cursor.view) .cursor-ring { opacity: 0; }
   .frame-media {
     position: relative; overflow: hidden; background: var(--surface);
     border: 1px solid var(--rule); border-radius: 2px;
@@ -935,19 +948,46 @@ const mouse = { x: innerWidth / 2, y: innerHeight / 2, inside: false };
 const cur = { x: mouse.x, y: mouse.y };
 let activeFrame = null, mapVisible = false, mapRaf = null;
 
-if (fine && !reduceMotion) map.classList.add("has-cursor");
+// Site-wide round cursor: a small dot plus a soft ring that trails behind it
+const ringEl = document.createElement("div");
+ringEl.className = "cursor-ring";
+document.body.appendChild(ringEl);
+const ring = { x: mouse.x, y: mouse.y };
+if (fine && !reduceMotion) {
+  document.documentElement.classList.add("has-cursor");
+  let shown = false;
+  document.addEventListener("pointermove", (e) => {
+    if (e.pointerType && e.pointerType !== "mouse") return;
+    mouse.x = e.clientX; mouse.y = e.clientY;
+    if (!shown) { cur.x = ring.x = mouse.x; cur.y = ring.y = mouse.y; shown = true; }
+    cursorEl.classList.add("on"); ringEl.classList.add("on");
+  }, { passive: true });
+  document.documentElement.addEventListener("mouseleave", () => { cursorEl.classList.remove("on"); ringEl.classList.remove("on"); shown = false; });
+  document.addEventListener("pointerover", (e) => {
+    const hot = !!e.target.closest('a, button, [role="button"], [data-cert], [data-cv], .frame, .sf');
+    ringEl.classList.toggle("hot", hot); cursorEl.classList.toggle("hot", hot);
+  });
+  document.addEventListener("pointerdown", () => ringEl.classList.add("down"));
+  document.addEventListener("pointerup", () => ringEl.classList.remove("down"));
+  const cursorTick = () => {
+    cur.x += (mouse.x - cur.x) * 0.45; cur.y += (mouse.y - cur.y) * 0.45;
+    ring.x += (mouse.x - ring.x) * 0.16; ring.y += (mouse.y - ring.y) * 0.16;
+    cursorEl.style.transform = `translate3d(${cur.x.toFixed(1)}px, ${cur.y.toFixed(1)}px, 0)`;
+    ringEl.style.transform = `translate3d(${ring.x.toFixed(1)}px, ${ring.y.toFixed(1)}px, 0)`;
+    requestAnimationFrame(cursorTick);
+  };
+  requestAnimationFrame(cursorTick);
+}
 map.addEventListener("pointermove", (e) => {
   mouse.x = e.clientX; mouse.y = e.clientY;
-  if (!mouse.inside) { cur.x = mouse.x; cur.y = mouse.y; }
   mouse.inside = true;
-  if (fine && !reduceMotion) cursorEl.classList.add("on");
   if (activeFrame) {
     const r = activeFrame.querySelector(".frame-media").getBoundingClientRect();
     activeFrame.style.setProperty("--gx", ((mouse.x - r.left) / r.width * 100) + "%");
     activeFrame.style.setProperty("--gy", ((mouse.y - r.top) / r.height * 100) + "%");
   }
 });
-map.addEventListener("pointerleave", () => { mouse.inside = false; cursorEl.classList.remove("on", "view"); });
+map.addEventListener("pointerleave", () => { mouse.inside = false; cursorEl.classList.remove("view"); });
 map.addEventListener("pointerover", (e) => {
   const f = e.target.closest(".frame");
   if (f === activeFrame) return;
@@ -986,8 +1026,6 @@ function mapLoop() {
     s.rx += (rx - s.rx) * k; s.ry += (ry - s.ry) * k;
     f.style.transform = `perspective(1400px) translate3d(${s.mx.toFixed(2)}px, ${(s.py + s.my).toFixed(2)}px, 0) rotateX(${s.rx.toFixed(2)}deg) rotateY(${s.ry.toFixed(2)}deg)`;
   });
-  cur.x += (mouse.x - cur.x) * 0.2; cur.y += (mouse.y - cur.y) * 0.2;
-  cursorEl.style.transform = `translate3d(${cur.x}px, ${cur.y}px, 0)`;
   mapRaf = mapVisible ? requestAnimationFrame(mapLoop) : null;
 }
 if (!reduceMotion) {
