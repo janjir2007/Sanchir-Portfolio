@@ -7,10 +7,12 @@
 <meta property="og:title" content="Sanchir Ariunbold — AI Engineer & Software Developer">
 <meta property="og:description" content="Portfolio of Sanchir Ariunbold: AI projects, experience, and certificates.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="assets/oil-change-predictor-cover.jpg">
+<meta property="og:image" content="https://sanchirportfolio.vercel.app/assets/oil-change-predictor-cover.jpg">
+<meta property="og:url" content="https://sanchirportfolio.vercel.app">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000'/%3E%3Ccircle cx='27' cy='34' r='5' fill='%23ece7db'/%3E%3C/svg%3E">
 <meta name="description" content="Portfolio of Sanchir Ariunbold, AI Engineer and Software Developer.">
+<script defer src="/_vercel/insights/script.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -494,6 +496,7 @@ const LD_COVER = "assets/learn-detect-stay-safe-cover.jpg";
 const LD_SHOTS = [{"src": "assets/learn-detect-stay-safe-1.jpg", "caption": "Welcome screen"}, {"src": "assets/learn-detect-stay-safe-2.jpg", "caption": "Choose a platform to practice"}, {"src": "assets/learn-detect-stay-safe-3.jpg", "caption": "Levels that unlock as you progress"}, {"src": "assets/learn-detect-stay-safe-4.jpg", "caption": "Spot the fake: a Facebook post"}, {"src": "assets/learn-detect-stay-safe-5.jpg", "caption": "Instant feedback explains the warning signs"}, {"src": "assets/learn-detect-stay-safe-6.jpg", "caption": "Email phishing challenge"}];
 const UNCAGE_IMG = "assets/uncage-volunteer.jpg";
 const SETGEL_IMG = "assets/setgeliin-ilgeelt.jpg";
+const UNESCO_IMG = "assets/unesco-youth-hackathon-certificate.jpg";
 const CISCO_IMG = "assets/cisco-endpoint-security.jpg";
 const CERT_IMG = "assets/ai-engineer-certificate.jpg";
 const AWARD_IMG = "assets/ai-engineer-award.jpg";
@@ -600,6 +603,20 @@ const CONFIG = {
       recognition: "Completed through the Cisco Networking Academy program, delivered by Mongolian School of Networking. Part of Cisco’s Junior Cybersecurity Analyst learning pathway.",
       academy: "Cisco Networking Academy is Cisco’s global IT and cybersecurity education program, taught through partner institutions around the world.",
       gallery: [{ src: CISCO_IMG, caption: "Certificate of completion" }]
+    },
+    {
+      id: "unesco-youth-hackathon",
+      title: "UNESCO Youth Hackathon 2026",
+      issuer: "UNESCO",
+      note: "Certificate of participation",
+      date: "October 24, 2026",
+      image: UNESCO_IMG,
+      url: "",
+      program: "Awarded for submitting a project responding to the 2026 theme, “Play Your Part: Youth Designing the Future of Media and Information Literacy,” during UNESCO’s Global Media and Information Literacy Week.",
+      project: { title: "Learn, Detect, Stay Safe", project: "project-4" },
+      recognition: "Signed by Mariya Gabriel, Assistant Director-General for Communication and Information, UNESCO. The hackathon brought together participants from 129 countries; I took part as team leader.",
+      academy: "UNESCO is the United Nations Educational, Scientific and Cultural Organization. Its Media and Information Literacy programme helps people think critically about the information they find online.",
+      gallery: [{ src: UNESCO_IMG, caption: "Certificate of participation" }]
     }
   ],
 
@@ -675,11 +692,11 @@ const CONFIG = {
       image: LD_COVER,
       overview: "A gamified mobile app that teaches people to spot scams and fake news. Players practice on realistic-looking Facebook and Instagram posts, emails, phone calls, Telegram chats, and text messages, decide whether each one is safe or suspicious, and learn the warning signs after every answer.",
       purpose: "Scams and misinformation keep getting more convincing, and most people only learn to spot them after being fooled. Built for the UNESCO Youth Hackathon 2026 during Global Media and Information Literacy Week, the app lets people practice safely, with levels, XP, and instant explanations.",
-      contribution: "Led the team as team leader and worked across frontend, backend, and design. We competed among participants from 129 countries.",
+      contribution: "Led the team as team leader and worked across frontend, backend, and design. We competed among participants from 129 countries and received a UNESCO certificate of participation.",
       technologies: ["React", "JavaScript", "Tailwind CSS", "UI/UX design"],
       screenshots: LD_SHOTS,
       gallery: "bare",
-      links: []
+      links: [{ label: "View UNESCO certificate", url: "#unesco-youth-hackathon" }]
     }
   ]
 };
@@ -821,7 +838,7 @@ function renderDetail(p) {
       ${row("Problem or purpose", p.purpose ? `<p>${esc(p.purpose)}</p>` : `<p>${ph("Describe the problem this project solves.")}</p>`)}
       ${row("My contribution", p.contribution ? `<p>${esc(p.contribution)}</p>` : `<p>${ph("Describe what you built yourself.")}</p>`)}
       ${row("Technologies", p.technologies.length ? `<p>${p.technologies.map(esc).join(", ")}</p>` : `<p>${ph("List the technologies you used.")}</p>`)}
-      ${row("Links", p.links.length ? `<ul class="plain-list">${p.links.map(l => `<li><a class="contact-line" style="font-size:1rem;border-bottom:1px solid var(--rule)" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a></li>`).join("")}</ul>` : `<p>${ph("Add a repository or live demo link.")}</p>`)}
+      ${row("Links", p.links.length ? `<ul class="plain-list">${p.links.map(l => `<li><a class="contact-line" style="font-size:1rem;border-bottom:1px solid var(--rule)" href="${esc(l.url)}"${l.url.startsWith("http") ? ' target="_blank" rel="noopener"' : ""}>${esc(l.label)}</a></li>`).join("")}</ul>` : `<p>${ph("Add a repository or live demo link.")}</p>`)}
     </div>
     <div class="gallery${phones ? (p.gallery === "wide" ? " wide" : " phones n" + p.screenshots.length + (p.gallery === "bare" ? " bare" : "")) : ""}">${shots}</div>
     <div class="detail-next"><span>Next project</span><a href="#${esc(next.id)}">${esc(next.title)}</a></div>`;
@@ -840,9 +857,10 @@ function renderCert(ct) {
     <p class="detail-meta">${esc(ct.issuer)}, ${esc(ct.date)}</p>
     ${ct.photo ? `<div class="frame-media detail-hero"><img src="${esc(hero)}" alt="Receiving the ${esc(ct.title)} certificate"></div>` : ""}
     <div class="rows">
-      ${ct.program ? row(ct.modules ? "About the program" : "About the course", `<p class="lead">${esc(ct.program)}</p>`) : ""}
+      ${ct.program ? row(ct.modules ? "About the program" : ct.project ? "About the certificate" : "About the course", `<p class="lead">${esc(ct.program)}</p>`) : ""}
       ${ct.modules ? row("Curriculum", `<ol class="modules">${ct.modules.map(m => `<li>${esc(m)}</li>`).join("")}</ol>`) : ""}
       ${ct.topics ? row("Topics covered", `<ul class="plain-list">${ct.topics.map(m => `<li>${esc(m)}</li>`).join("")}</ul>`) : ""}
+      ${ct.project ? row("Project", `<p><a class="cert-link" style="margin-top:0" href="#${esc(ct.project.project)}">${esc(ct.project.title)}</a></p>`) : ""}
       ${ct.capstone ? row("Capstone project", cap ? `<p><a class="cert-link" style="margin-top:0" href="#${esc(cap.id)}">${esc(ct.capstone.title)}</a></p>` : `<p>${esc(ct.capstone.title)}</p>`) : ""}
       ${row("Certification", `${ct.recognition ? `<p>${esc(ct.recognition)}</p>` : ""}${ct.credentialId ? `<p class="cert-meta">Credential ID ${esc(ct.credentialId)}</p>` : ""}${ct.image ? `<button type="button" class="cert-link" data-cert="${esc(ct.image)}">View certificate</button>` : ""}`)}
       ${ct.academy ? row(ct.capstone ? "About the academy" : "About the issuer", `<p>${esc(ct.academy)}</p>`) : ""}
@@ -1098,6 +1116,7 @@ detailEl.addEventListener("keydown", (e) => {
 
 /* ---------- CV download ---------- */
 function downloadCV() {
+  if (window.__notify) window.__notify.cv();
   const a = document.createElement("a");
   a.href = "Sanchir_Ariunbold_CV.pdf"; a.download = "Sanchir_Ariunbold_CV.pdf";
   document.body.appendChild(a); a.click(); a.remove();
@@ -1116,6 +1135,67 @@ document.addEventListener("click", (e) => {
   if (!lb.hidden && e.target.closest("#lightbox")) closeLightbox();
 });
 document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !lb.hidden) closeLightbox(); });
+
+/* ---------- Visitor notifications (emails Sanchir, see api/notify.js) ---------- */
+(function () {
+  let skip = false;
+  try {
+    if (new URLSearchParams(location.search).has("me")) localStorage.setItem("portfolio-owner", "1");
+    skip = !!localStorage.getItem("portfolio-owner");
+  } catch (e) {}
+  if (skip || navigator.webdriver || location.hostname !== "sanchirportfolio.vercel.app") return;
+
+  const start = Date.now();
+  const views = [];
+  const add = (v) => { if (v && !views.includes(v)) views.push(v); };
+  let sent = false, cv = false;
+
+  const ua = navigator.userAgent;
+  const kind = /iPad|Tablet/i.test(ua) ? "Tablet" : /Mobi|Android|iPhone/i.test(ua) ? "Phone" : "Desktop";
+  const os = /Windows/i.test(ua) ? "Windows" : /iPhone|iPad|iOS/i.test(ua) ? "iOS" : /Android/i.test(ua) ? "Android" : /Mac/i.test(ua) ? "Mac" : /Linux/i.test(ua) ? "Linux" : "";
+  const browser = /Edg\//.test(ua) ? "Edge" : /OPR\//.test(ua) ? "Opera" : /Chrome\//.test(ua) ? "Chrome" : /Safari\//.test(ua) ? "Safari" : /Firefox\//.test(ua) ? "Firefox" : "";
+  const device = [kind, os, browser].filter(Boolean).join(" · ");
+  let source = "Direct (typed or shared link)";
+  try { if (document.referrer && new URL(document.referrer).hostname !== location.hostname) source = new URL(document.referrer).hostname.replace(/^www\./, ""); } catch (e) {}
+
+  // Sections the visitor actually scrolled to
+  const names = { about: "About Me", experience: "Work Experience", projects: "Projects", certificates: "Certificates", volunteering: "Volunteering", contact: "Contact" };
+  const timers = {};
+  const io = new IntersectionObserver((entries) => entries.forEach((en) => {
+    const id = en.target.id;
+    if (en.isIntersecting) timers[id] = setTimeout(() => add(names[id]), 1500); // counted after 1.5 s in view
+    else clearTimeout(timers[id]);
+  }), { rootMargin: "-40% 0px -40% 0px" });
+  Object.keys(names).forEach((id) => { const el = document.getElementById(id); if (el) io.observe(el); });
+
+  // Project and certificate pages they opened
+  const trackHash = () => {
+    const h = decodeURIComponent(location.hash.slice(1));
+    const item = CONFIG.projects.find((p) => p.id === h) || CONFIG.certificates.find((c) => c.id && c.id === h);
+    if (item) add(item.title);
+  };
+  window.addEventListener("hashchange", trackHash);
+  trackHash();
+
+  const fmt = (ms) => { const s = Math.round(ms / 1000); return s < 60 ? s + " sec" : Math.floor(s / 60) + " min " + (s % 60) + " sec"; };
+  const payload = (type) => JSON.stringify({ type, device, source, views, cv, duration: fmt(Date.now() - start) });
+  const post = (type) => {
+    const body = payload(type);
+    try {
+      if (type === "visit" && navigator.sendBeacon) return navigator.sendBeacon("/api/notify", new Blob([body], { type: "application/json" }));
+      fetch("/api/notify", { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive: true }).catch(() => {});
+    } catch (e) {}
+  };
+  const summary = () => {
+    if (sent || Date.now() - start < 4000) return; // ignore instant bounces
+    sent = true; post("visit");
+  };
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") summary(); });
+  window.addEventListener("pagehide", summary);
+  setTimeout(summary, 10 * 60 * 1000); // long visits: send after 10 minutes
+
+  window.__notify = { cv: () => { cv = true; post("cv"); } };
+})();
 
 /* ---------- Init ---------- */
 renderHome();
